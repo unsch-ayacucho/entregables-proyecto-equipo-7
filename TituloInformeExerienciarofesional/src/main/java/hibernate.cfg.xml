@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+      <!--   <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url"><![CDATA[jdbc:mysql://localhost:3306/tesisexperienciaprofesional?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC ]]></property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> -->
+        <mapping class="pe.edu.unsch.entities.Actadessustentacion"/>
+        <mapping class="pe.edu.unsch.entities.Bachiller"/>
+        <mapping class="pe.edu.unsch.entities.Comisiondictaminadora"/>
+        <mapping class="pe.edu.unsch.entities.Consejofacultad"/>
+        <mapping class="pe.edu.unsch.entities.Constanciadeaprobacion"/>
+        <mapping class="pe.edu.unsch.entities.Decano"/>
+        <mapping class="pe.edu.unsch.entities.Dictamen"/>
+        <mapping class="pe.edu.unsch.entities.Directorescuela"/>
+        <mapping class="pe.edu.unsch.entities.Documento"/>
+        <mapping class="pe.edu.unsch.entities.Juradocalificador"/>
+        <mapping class="pe.edu.unsch.entities.Memorandomultiple"/>
+        <mapping class="pe.edu.unsch.entities.Notadesustentacion"/>
+        <mapping class="pe.edu.unsch.entities.Presidentecomisionacademina"/>
+        <mapping class="pe.edu.unsch.entities.Resoluciondecanal"/>
+        <mapping class="pe.edu.unsch.entities.Secreatriofacultad"/>
+        <mapping class="pe.edu.unsch.entities.Solicitud"/>
+        <mapping class="pe.edu.unsch.entities.Tituloprofesional"/>
+    </session-factory>
+</hibernate-configuration>
