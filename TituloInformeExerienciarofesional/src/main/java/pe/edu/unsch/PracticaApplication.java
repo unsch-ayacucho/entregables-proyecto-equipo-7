@@ -13,7 +13,7 @@ public class PracticaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PracticaApplication.class, args);
-		Browse("http://localhost:8080/");
+		Browse("http://localhost:8080/views/login");
 	}
 
 	 public static void Browse(String url) {

@@ -47,16 +47,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="top-content-style">
 					<img src="images/user.jpg" alt="" />
 				</div>
-				<form th:action="@{/views/home/}" method="get">
+				<form th:action="@{/login}" method="post">
 					<p class="legend">INGRESE<span class="fa fa-hand-o-down"></span></p>
 					<div class="input">
-						<input type="text" placeholder="Email" name="email" required />
+						<input type="text" placeholder="Email" name="username" required />
 						<span class="fa fa-envelope"></span>
 					</div>
 					<div class="input">
 						<input type="password" placeholder="Password" name="password" required />
 						<span class="fa fa-unlock"></span>
 					</div>
+										<p th:text="${error}"></p>
+					
 					<button type="submit" class="btn submit">
 						<span class="fa fa-sign-in"></span>
 					</button>
