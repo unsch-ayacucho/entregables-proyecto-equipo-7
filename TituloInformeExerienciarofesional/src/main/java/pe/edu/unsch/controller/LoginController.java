@@ -54,6 +54,8 @@ public class LoginController {
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("usuario");
+		session.removeAttribute("modulosPorPerfil");
+		session.removeAttribute("submodulosPorPerfil");
 		return "redirect:/views/login";
 	}
 }
