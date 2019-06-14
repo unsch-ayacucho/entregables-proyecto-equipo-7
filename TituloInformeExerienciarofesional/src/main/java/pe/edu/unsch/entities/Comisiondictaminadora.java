@@ -1,7 +1,5 @@
-// default package
-// Generated 13/06/2019 02:30:17 PM by Hibernate Tools 5.1.10.Final
-
 package pe.edu.unsch.entities;
+// Generated 13/06/2019 07:12:27 PM by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

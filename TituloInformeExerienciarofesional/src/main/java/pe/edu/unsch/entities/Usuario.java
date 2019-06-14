@@ -1,12 +1,16 @@
-// default package
-// Generated 13/06/2019 02:30:17 PM by Hibernate Tools 5.1.10.Final
 package pe.edu.unsch.entities;
+// Generated 13/06/2019 07:12:27 PM by Hibernate Tools 5.1.10.Final
+
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,17 +29,20 @@ public class Usuario implements java.io.Serializable {
 	private String foto;
 	private Byte estado;
 	private Date ultimoLogin;
+	private Set<UsuarioPerfil> usuarioPerfils = new HashSet<UsuarioPerfil>(0);
 
 	public Usuario() {
 	}
 
-	public Usuario(String nombre, String usuario, String password, String foto, Byte estado, Date ultimoLogin) {
+	public Usuario(String nombre, String usuario, String password, String foto, Byte estado, Date ultimoLogin,
+			Set<UsuarioPerfil> usuarioPerfils) {
 		this.nombre = nombre;
 		this.usuario = usuario;
 		this.password = password;
 		this.foto = foto;
 		this.estado = estado;
 		this.ultimoLogin = ultimoLogin;
+		this.usuarioPerfils = usuarioPerfils;
 	}
 
 	@Id
@@ -103,6 +110,15 @@ public class Usuario implements java.io.Serializable {
 
 	public void setUltimoLogin(Date ultimoLogin) {
 		this.ultimoLogin = ultimoLogin;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+	public Set<UsuarioPerfil> getUsuarioPerfils() {
+		return this.usuarioPerfils;
+	}
+
+	public void setUsuarioPerfils(Set<UsuarioPerfil> usuarioPerfils) {
+		this.usuarioPerfils = usuarioPerfils;
 	}
 
 }

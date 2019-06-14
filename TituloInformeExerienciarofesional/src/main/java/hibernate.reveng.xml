@@ -13,11 +13,17 @@
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="documento"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="juradocalificador"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="memorandomultiple"/>
+  <table-filter match-catalog="tesisexperienciaprofesional" match-name="modulo"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="notadesustentacion"/>
+  <table-filter match-catalog="tesisexperienciaprofesional" match-name="opcion"/>
+  <table-filter match-catalog="tesisexperienciaprofesional" match-name="perfil"/>
+  <table-filter match-catalog="tesisexperienciaprofesional" match-name="perfil_opcion"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="presidentecomisionacademina"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="resoluciondecanal"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="secreatriofacultad"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="solicitud"/>
+  <table-filter match-catalog="tesisexperienciaprofesional" match-name="submodulo"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="tituloprofesional"/>
   <table-filter match-catalog="tesisexperienciaprofesional" match-name="usuario"/>
+  <table-filter match-catalog="tesisexperienciaprofesional" match-name="usuario_perfil"/>
 </hibernate-reverse-engineering>
