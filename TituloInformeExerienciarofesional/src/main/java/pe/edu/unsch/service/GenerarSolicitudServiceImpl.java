@@ -5,14 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.edu.unsch.entities.*;
 import pe.edu.unsch.dao.GenerarSolicitudDao;
+import pe.edu.unsch.entities.*;
+
 
 @Service
 public class GenerarSolicitudServiceImpl implements GenerarSolicitudService {
 
 	@Autowired
-	private GenerarSolicitudService generarSolicitudDAO;
+	private GenerarSolicitudDao generarSolicitudDAO;
 
 	@Override
 	public Solicitud getSolicitudById(int idSolicitud) {
@@ -27,7 +28,7 @@ public class GenerarSolicitudServiceImpl implements GenerarSolicitudService {
 
 	@Override
 	public synchronized boolean addSolicitud(Solicitud solicitud) {
-		if (generarSolicitudDAO.SolicitudExists(solicitud.getClass(), solicitud.getDecano(), solicitud.getDocumento())) {
+		if (generarSolicitudDAO.SolicitudExists(solicitud.getBachiller(), solicitud.getDecano(), solicitud.getDocumento())) {
 			return false;
 		} else {
 			generarSolicitudDAO.addSolicitud(solicitud);
