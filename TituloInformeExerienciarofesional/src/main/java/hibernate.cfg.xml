@@ -2,23 +2,12 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
                                          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
- <session-factory >
- 
+ <session-factory>
   <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
   <property name="hibernate.connection.password">12345678</property>
   <property name="hibernate.connection.url">jdbc:mysql://localhost/tesisexperienciaprofesional?useSSL=false&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useTimezone=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;zeroDateTimeBehavior=convertToNull</property>
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.default_schema">tesisexperienciaprofesional</property>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-  <!-- 
-  
-  <mapping class="pe.edu.unsch.entities.Modulo"/>
-  <mapping class="pe.edu.unsch.entities.Opcion"/>
-  <mapping class="pe.edu.unsch.entities.Perfil"/>
-  <mapping class="pe.edu.unsch.entities.PerfilOpcion"/>
-  <mapping class="pe.edu.unsch.entities.Submodulo"/>
-  <mapping class="pe.edu.unsch.entities.Usuario"/>
-  <mapping class="pe.edu.unsch.entities.UsuarioPerfil"/>
-  -->
  </session-factory>
 </hibernate-configuration>

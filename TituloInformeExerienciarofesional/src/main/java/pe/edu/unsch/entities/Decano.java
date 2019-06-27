@@ -1,9 +1,13 @@
 package pe.edu.unsch.entities;
-// Generated 13/06/2019 07:12:27 PM by Hibernate Tools 5.1.10.Final
+// Generated 23/06/2019 06:32:43 PM by Hibernate Tools 4.3.5.Final
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,18 +23,33 @@ public class Decano implements java.io.Serializable {
 	private String apellidoMaterno;
 	private String email;
 	private String telefono;
+	private String nombreCompleto;
+	private Set<Solicitud> solicituds = new HashSet<Solicitud>(0);
 
 	public Decano() {
 	}
 
 	public Decano(String dni, String nombre, String apellidoPaterno, String apellidoMaterno, String email,
-			String telefono) {
+			String telefono, String nombreCompleto) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidoPaterno = apellidoPaterno;
 		this.apellidoMaterno = apellidoMaterno;
 		this.email = email;
 		this.telefono = telefono;
+		this.nombreCompleto = nombreCompleto;
+	}
+
+	public Decano(String dni, String nombre, String apellidoPaterno, String apellidoMaterno, String email,
+			String telefono, String nombreCompleto, Set<Solicitud> solicituds) {
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellidoPaterno = apellidoPaterno;
+		this.apellidoMaterno = apellidoMaterno;
+		this.email = email;
+		this.telefono = telefono;
+		this.nombreCompleto = nombreCompleto;
+		this.solicituds = solicituds;
 	}
 
 	@Id
@@ -87,6 +106,24 @@ public class Decano implements java.io.Serializable {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	@Column(name = "nombreCompleto", nullable = false, length = 500)
+	public String getNombreCompleto() {
+		return this.nombreCompleto;
+	}
+
+	public void setNombreCompleto(String nombreCompleto) {
+		this.nombreCompleto = nombreCompleto;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "decano")
+	public Set<Solicitud> getSolicituds() {
+		return this.solicituds;
+	}
+
+	public void setSolicituds(Set<Solicitud> solicituds) {
+		this.solicituds = solicituds;
 	}
 
 }
