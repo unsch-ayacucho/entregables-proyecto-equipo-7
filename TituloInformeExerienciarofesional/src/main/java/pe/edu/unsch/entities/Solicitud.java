@@ -1,12 +1,9 @@
 package pe.edu.unsch.entities;
-// Generated 23/06/2019 06:32:43 PM by Hibernate Tools 4.3.5.Final
+// Generated 13/06/2019 07:12:27 PM by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -18,18 +15,18 @@ import javax.persistence.UniqueConstraint;
 public class Solicitud implements java.io.Serializable {
 
 	private int idSolicitud;
-	private Bachiller bachiller;
-	private Decano decano;
-	private Documento documento;
+	private int idDocumento;
+	private String codigo;
+	private String dni;
 
 	public Solicitud() {
 	}
 
-	public Solicitud(int idSolicitud, Bachiller bachiller, Decano decano, Documento documento) {
+	public Solicitud(int idSolicitud, int idDocumento, String codigo, String dni) {
 		this.idSolicitud = idSolicitud;
-		this.bachiller = bachiller;
-		this.decano = decano;
-		this.documento = documento;
+		this.idDocumento = idDocumento;
+		this.codigo = codigo;
+		this.dni = dni;
 	}
 
 	@Id
@@ -43,34 +40,31 @@ public class Solicitud implements java.io.Serializable {
 		this.idSolicitud = idSolicitud;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "codigo", unique = true, nullable = false)
-	public Bachiller getBachiller() {
-		return this.bachiller;
+	@Column(name = "idDocumento", nullable = false)
+	public int getIdDocumento() {
+		return this.idDocumento;
 	}
 
-	public void setBachiller(Bachiller bachiller) {
-		this.bachiller = bachiller;
+	public void setIdDocumento(int idDocumento) {
+		this.idDocumento = idDocumento;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "dni", nullable = false)
-	public Decano getDecano() {
-		return this.decano;
+	@Column(name = "codigo", unique = true, nullable = false, length = 8)
+	public String getCodigo() {
+		return this.codigo;
 	}
 
-	public void setDecano(Decano decano) {
-		this.decano = decano;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idDocumento", nullable = false)
-	public Documento getDocumento() {
-		return this.documento;
+	@Column(name = "dni", nullable = false, length = 8)
+	public String getDni() {
+		return this.dni;
 	}
 
-	public void setDocumento(Documento documento) {
-		this.documento = documento;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 
 }
