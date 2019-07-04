@@ -25,7 +25,7 @@ public class GenerarSolicitudDaoImpl implements GenerarSolicitudDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Solicitud> getSolicitud() {
-		String hql = "FROM Solicitud as solic ORDER BY solic.idSolicitud";
+		String hql = "FROM Solicitud as solicitud";
 		return (List<Solicitud>) entityManager.createQuery(hql).getResultList();
 	}	
 	@Override

@@ -19,6 +19,7 @@ import javax.persistence.Table;
 @Table(name = "documento", catalog = "tesisexperienciaprofesional")
 public class Documento implements java.io.Serializable {
 
+
 	private Integer idDocumento;
 	private String tipoDocumento;
 	private String descripcion;
@@ -76,5 +77,11 @@ public class Documento implements java.io.Serializable {
 	public void setSolicituds(Set<Solicitud> solicituds) {
 		this.solicituds = solicituds;
 	}
+	
+	/*@Override
+	public String toString() {
+		return "Documento [idDocumento=" + idDocumento + ", tipoDocumento=" + tipoDocumento + ", descripcion="
+				+ descripcion + ", solicituds=" + solicituds + "]";
+	}*/
 
 }

@@ -73,4 +73,12 @@ public class Solicitud implements java.io.Serializable {
 		this.documento = documento;
 	}
 
+	/*@Override
+	public String toString() {
+		return "Solicitud [idSolicitud=" + idSolicitud + ", bachiller=" + bachiller + ", decano=" + decano
+				+ ", documento=" + documento + "]";
+	}*/
+	
+	
+
 }

@@ -2,28 +2,5 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="actadessustentacion"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="bachiller"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="comisiondictaminadora"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="consejofacultad"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="constanciadeaprobacion"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="decano"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="dictamen"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="directorescuela"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="documento"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="juradocalificador"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="memorandomultiple"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="modulo"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="notadesustentacion"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="opcion"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="perfil"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="perfil_opcion"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="presidentecomisionacademina"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="resoluciondecanal"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="secreatriofacultad"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="solicitud"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="submodulo"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="tituloprofesional"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="usuario"/>
-  <table-filter match-catalog="tesisexperienciaprofesional" match-name="usuario_perfil"/>
+  <table-filter match-catalog="cargabd" match-name="docente"/>
 </hibernate-reverse-engineering>

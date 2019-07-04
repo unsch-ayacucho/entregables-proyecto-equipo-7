@@ -3,10 +3,12 @@ package pe.edu.unsch.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import pe.edu.unsch.dao.SolicitudRepository;
 import pe.edu.unsch.entities.Solicitud;
 import pe.edu.unsch.service.GenerarSolicitudService;
 
@@ -23,18 +26,40 @@ import pe.edu.unsch.service.GenerarSolicitudService;
 @RequestMapping("views/generarDocumento")
 public class GenerarSolicitudController {
 
+	
+	@Autowired
+	private GenerarSolicitudService generarSolicitudService;
+	
+	@Autowired
+	@Qualifier("solicitudRepository")
+	private SolicitudRepository solicitudRepository;
+	
 	@GetMapping("views/listar")
-	public String index() {
+	public String index(Model model) {
+		System.out.println("lista solicitud "+ generarSolicitudService.getSolicitud() );
+		//model.addAttribute("listaSolcicitud",generarSolicitudService.getSolicitud());
+		model.addAttribute("listaSolcicitud",solicitudRepository.findAll());
+		model.addAttribute("idDecano", 12345678);
+		model.addAttribute("idDcumento",1);
+		model.addAttribute("idBachiller", 1);
+
+		
 		return "views/admin/generarSolicitud/index";
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	@GetMapping("views/solicitud")
 	public String mantenimiento() {
 		return "views/admin/generarSolicitud/mantenimiento";
 	}
 
-	@Autowired
-	private GenerarSolicitudService generarSolicitudService;
+	
 
 	@GetMapping("solicitud/{id}")
 	public ResponseEntity<Solicitud> getArticleById(@PathVariable("id") Integer id) {

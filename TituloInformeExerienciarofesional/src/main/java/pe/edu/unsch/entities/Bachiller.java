@@ -151,4 +151,13 @@ public class Bachiller implements java.io.Serializable {
 		this.solicituds = solicituds;
 	}
 
+	/*@Override
+	public String toString() {
+		return "Bachiller [codigo=" + codigo + ", dni=" + dni + ", nombre=" + nombre + ", apellidoPaterno="
+				+ apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", escuela=" + escuela + ", email=" + email
+				+ ", telefono=" + telefono + ", nombreCompleto=" + nombreCompleto + ", solicituds=" + solicituds + "]";
+	}*/
+	
+	
+
 }

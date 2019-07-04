@@ -17,6 +17,13 @@ import javax.persistence.Table;
 @Table(name = "decano", catalog = "tesisexperienciaprofesional")
 public class Decano implements java.io.Serializable {
 
+	/*@Override
+	public String toString() {
+		return "Decano [dni=" + dni + ", nombre=" + nombre + ", apellidoPaterno=" + apellidoPaterno
+				+ ", apellidoMaterno=" + apellidoMaterno + ", email=" + email + ", telefono=" + telefono
+				+ ", nombreCompleto=" + nombreCompleto + ", solicituds=" + solicituds + "]";
+	}*/
+
 	private String dni;
 	private String nombre;
 	private String apellidoPaterno;
