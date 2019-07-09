@@ -33,7 +33,6 @@ public class Solicitud implements java.io.Serializable {
 	}
 
 	@Id
-
 	@Column(name = "idSolicitud", unique = true, nullable = false)
 	public int getIdSolicitud() {
 		return this.idSolicitud;
