@@ -1,6 +1,8 @@
 package pe.edu.unsch.entities;
 // Generated 23/06/2019 06:32:43 PM by Hibernate Tools 4.3.5.Final
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -31,6 +33,7 @@ public class Decano implements java.io.Serializable {
 	private String email;
 	private String telefono;
 	private String nombreCompleto;
+	@JsonIgnore
 	private Set<Solicitud> solicituds = new HashSet<Solicitud>(0);
 
 	public Decano() {
@@ -131,6 +134,11 @@ public class Decano implements java.io.Serializable {
 
 	public void setSolicituds(Set<Solicitud> solicituds) {
 		this.solicituds = solicituds;
+	}
+
+	public Decano(String dni,String nombreCompleto){
+		this.dni = dni;
+		this.nombreCompleto = nombreCompleto;
 	}
 
 }

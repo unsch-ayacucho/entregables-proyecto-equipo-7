@@ -14,4 +14,5 @@ public interface GenerarSolicitudService {
 
 	void deleteSolicitud(int idSolicitud);
 
+	public String generateReport(Solicitud  solicitud);
 }

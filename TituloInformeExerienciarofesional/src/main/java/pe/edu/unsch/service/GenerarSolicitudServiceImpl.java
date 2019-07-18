@@ -1,7 +1,11 @@
 package pe.edu.unsch.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +48,39 @@ public class GenerarSolicitudServiceImpl implements GenerarSolicitudService {
 	@Override
 	public void deleteSolicitud(int idSolicitud) {
 		generarSolicitudDAO.deleteSolicitud(idSolicitud);
+	}
+
+	@Override
+	public String generateReport(Solicitud solicitud){
+		try {
+			String reportPath = "C:\\reportes";
+			// Compile the Jasper report from .jrxml to .japser
+			JasperReport jasperReport = JasperCompileManager.compileReport(reportPath +  "\\tesis_solicitud.jrxml");
+			//JasperReport jasperReport1 = new JasperReport();
+			// Get your data source
+			JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(null);
+			//JRBeanCollectionDataSource jrBeanCollectionDataSource = null;
+
+			// Add parameters
+			Map<String, Object> params = new HashMap<>();
+			params.put("strNombreDecano", solicitud.getDecano().getNombreCompleto());
+			params.put("strNombreBachiller", solicitud.getBachiller().getNombreCompleto());
+			params.put("strDniBachiller", solicitud.getBachiller().getDni());
+			params.put("strCodigoBachiller", solicitud.getBachiller().getCodigo());
+			params.put("strDireccionBachiller", "direccion xxx xxx ");
+			params.put("strFechaLugarSolicitud", "Ayacucho ");
+			// Fill the report,
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params);
+			// Export the report to a PDF file
+			JasperExportManager.exportReportToPdfFile(jasperPrint, reportPath + "\\tesis_solicitud.pdf");
+
+			System.out.println("Done");
+
+			//return "Report successfully generated @path= " + reportPath;
+			return reportPath+ "\\tesis_solicitud.pdf";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return e.getMessage();
+		}
 	}
 }

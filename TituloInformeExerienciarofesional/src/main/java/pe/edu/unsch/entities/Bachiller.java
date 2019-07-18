@@ -1,6 +1,8 @@
 package pe.edu.unsch.entities;
 // Generated 23/06/2019 06:32:43 PM by Hibernate Tools 4.3.5.Final
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -27,6 +29,7 @@ public class Bachiller implements java.io.Serializable {
 	private String email;
 	private String telefono;
 	private String nombreCompleto;
+	@JsonIgnore
 	private Set<Solicitud> solicituds = new HashSet<Solicitud>(0);
 
 	public Bachiller() {
@@ -61,7 +64,7 @@ public class Bachiller implements java.io.Serializable {
 
 	@Id
 
-	@Column(name = "codigo", unique = true, nullable = false, length = 8)
+	@Column(name = "codigo", nullable = false, length = 8)
 	public String getCodigo() {
 		return this.codigo;
 	}
@@ -70,7 +73,7 @@ public class Bachiller implements java.io.Serializable {
 		this.codigo = codigo;
 	}
 
-	@Column(name = "dni", unique = true, nullable = false, length = 8)
+	@Column(name = "dni", nullable = false, length = 8)
 	public String getDni() {
 		return this.dni;
 	}

@@ -1,97 +1,124 @@
 package pe.edu.unsch.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.util.UriComponentsBuilder;
-
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import pe.edu.unsch.dao.SolicitudRepository;
+import pe.edu.unsch.entities.Documento;
 import pe.edu.unsch.entities.Solicitud;
 import pe.edu.unsch.service.GenerarSolicitudService;
 
+import javax.validation.Valid;
+@CrossOrigin(origins = "*")@RestController
 @Controller
 @RequestMapping("views/generarDocumento")
 public class GenerarSolicitudController {
 
-	
-	@Autowired
-	private GenerarSolicitudService generarSolicitudService;
-	
-	@Autowired
-	@Qualifier("solicitudRepository")
-	private SolicitudRepository solicitudRepository;
-	
-	@GetMapping("views/listar")
-	public String index(Model model) {
-		System.out.println("lista solicitud "+ generarSolicitudService.getSolicitud() );
-		//model.addAttribute("listaSolcicitud",generarSolicitudService.getSolicitud());
-		model.addAttribute("listaSolcicitud",solicitudRepository.findAll());
-		model.addAttribute("idDecano", 12345678);
-		model.addAttribute("idDcumento",1);
-		model.addAttribute("idBachiller", 1);
 
-		
-		return "views/admin/generarSolicitud/index";
-	}
-	
-	
-	
-	
-	
-	
-	
+    @Autowired
+    private GenerarSolicitudService generarSolicitudService;
 
-	@GetMapping("views/solicitud")
-	public String mantenimiento() {
-		return "views/admin/generarSolicitud/mantenimiento";
-	}
+    @Autowired
+    @Qualifier("solicitudRepository")
+    private SolicitudRepository solicitudRepository;
 
-	
 
-	@GetMapping("solicitud/{id}")
-	public ResponseEntity<Solicitud> getArticleById(@PathVariable("id") Integer id) {
-		Solicitud solicitud = generarSolicitudService.getSolicitudById(id);
-		return new ResponseEntity<Solicitud>(solicitud, HttpStatus.OK);
-	}
+    @GetMapping("views/listar")
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView("views/admin/generarSolicitud/index");
+        System.out.println("lista solicitud " + generarSolicitudService.getSolicitud());
+        mv.addObject("listaSolcicitud", generarSolicitudService.getSolicitud());
+        return mv;
+    }
 
-	@GetMapping("solicitud")
-	public ResponseEntity<List<Solicitud>> getSolicitud() {
-		List<Solicitud> listaSolicitud = generarSolicitudService.getSolicitud();
-		return new ResponseEntity<List<Solicitud>>(listaSolicitud, HttpStatus.OK);
-	}
-	
-	@PostMapping("solicitud")
-	public ResponseEntity<Void> addArticle(@RequestBody Solicitud solicitud, UriComponentsBuilder builder) {
-                boolean flag = generarSolicitudService.addSolicitud(solicitud);
-                if (flag == false) {
-        	    return new ResponseEntity<Void>(HttpStatus.CONFLICT);
-                }
-                HttpHeaders headers = new HttpHeaders();
-                headers.setLocation(builder.path("/solicitud/{id}").buildAndExpand(solicitud.getIdSolicitud()).toUri());
-                return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-	}
-	@PutMapping("solicitud")
-	public ResponseEntity<Solicitud> updateArticle(@RequestBody Solicitud solicitud) {
-		generarSolicitudService.updateSolicitud(solicitud);
-		return new ResponseEntity<Solicitud>(solicitud, HttpStatus.OK);
-	}
-	@DeleteMapping("solicitud/{id}")
-	public ResponseEntity<Void> deleteArticle(@PathVariable("id") Integer id) {
-		generarSolicitudService.deleteSolicitud(id);
-		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-	}	
+
+    @GetMapping("views/solicitud")
+    public ModelAndView mantenimiento(@ModelAttribute("solicitud") Solicitud solicitud) {
+        ModelAndView mv = new ModelAndView("views/admin/generarSolicitud/mantenimiento");
+        mv.addObject("solicitudObject", solicitud);
+        mv.addObject("idDoc", 1);
+        return mv;
+    }
+
+    @PostMapping("/SaveDoc")
+    public ModelAndView save(@Valid Solicitud solicitud, BindingResult result, String single_cal3) {
+        Documento doc = new Documento();
+        doc.setIdDocumento(1);
+        solicitud.setDocumento(doc);
+
+        //persona.setNombreCompleto(persona.getNombres() + " " + persona.getApellidos());
+        solicitudRepository.save(solicitud);
+        return index();
+    }
+
+
+    @GetMapping("/EditVisitaDomiciliaria/{idSolicitud}")
+    public ModelAndView edit(@PathVariable("idSolicitud") int id) {
+        return mantenimiento(solicitudRepository.findById(id).get());
+    }
+
+
+    @CrossOrigin(origins = "*")
+    @GetMapping("/report/{idSolicitud}")
+    public String empReport(@PathVariable("idSolicitud") int idSolicitud) {
+        Solicitud solicitud = (Solicitud) solicitudRepository.findById(idSolicitud).get();
+        return generarSolicitudService.generateReport(solicitud );
+    }
+
+
+   /*@Bean
+    @Qualifier("ReportX")
+    public JasperReportsPdfView reportX() {
+        JasperReportsPdfView v = new JasperReportsPdfView();
+        v.setUrl("classpath:reportes/tesis_solicitud.jasper");
+        v.setReportDataKey("datasource");
+        return v;
+    }
+
+    @Autowired @Qualifier("ReportX")
+    private JasperReportsPdfView reportX;
+
+
+    @RequestMapping(value = "IncidenciaBI", method = RequestMethod.GET)
+    public ModelAndView getRptX(ModelAndView modelAndView) {
+        Map<String, Object> parameterMap = new HashMap<>();
+        //parameterMap.put("datasource",dbsoruce);
+        parameterMap.put("datasource",null);
+        modelAndView = new ModelAndView(reportX, parameterMap);
+        return modelAndView;
+    }
+
+*/
+
+/*
+
+    @Autowired
+    private ApplicationContext appContext;
+
+    @GetMapping( "/pdf")
+    public ModelAndView report() {
+
+        JRViewer view = new JRViewer();
+        view.setUrl("classpath:reportes/tesis_solicitud.jrxml");
+        view.setApplicationContext(appContext);
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("datasource", null);
+
+        params.put("strNombreDecano", "decano decano decano ");
+        params.put("strNombreBachiller", "bachiller bachiller bachiller");
+        params.put("strDniBachiller", "52548954");
+        params.put("strCodigoBachiller", "70905469");
+        params.put("strDireccionBachiller", "direccion xxx ");
+        params.put("strFechaLugarSolicitud", "nnn");
+
+        return new ModelAndView(view, params);
+    }
+
+*/
+
 
 }

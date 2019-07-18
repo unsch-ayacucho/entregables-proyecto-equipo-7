@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tesis_solicitud" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8e95def7-8567-474f-a3a8-f176c0d313df">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="strNombreDecano" class="java.lang.String">
+		<fieldDescription><![CDATA[Nombre del decano ]]></fieldDescription>
+	</field>
+	<field name="strNombreBachiller" class="java.lang.String">
+		<fieldDescription><![CDATA[nombre del bachiller]]></fieldDescription>
+	</field>
+	<field name="strDniBachiller" class="java.lang.String">
+		<fieldDescription><![CDATA[DNI del bachiller]]></fieldDescription>
+	</field>
+	<field name="strCodigoBachiller" class="java.lang.String">
+		<fieldDescription><![CDATA[Codigo del bachiller]]></fieldDescription>
+	</field>
+	<field name="strDireccionBachiller" class="java.lang.String">
+		<fieldDescription><![CDATA[Direccion del Bachiller]]></fieldDescription>
+	</field>
+	<field name="strFechaLugarSolicitud" class="java.lang.String">
+		<fieldDescription><![CDATA[fecha en el que se genera la solictud y el lugar ]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="2" width="480" height="23" uuid="e6d1e80a-92b8-43c0-ab54-af78bec5bb76"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[UNIVERSIDAD NACIONAL DE SAN CRISTOBAL DE HUAMANGA ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="25" width="390" height="20" uuid="b3971b68-d095-4753-87fb-df05d5cf7090"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[FACULTAD DE INGENIERIA DE MINAS GEOLOGIA Y CIVIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="45" width="90" height="18" uuid="e8f9b8ad-d310-4728-b41c-10ef53d5d5ea"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[DECANATURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="64" width="340" height="20" uuid="058ce4c0-dde6-4b64-a14c-6bcd20dd54d8"/>
+				<textElement>
+					<font size="14" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[ "Año de la lucha contra la corrupción y la impunidad"]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="660" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="319" y="17" width="59" height="19" uuid="ba3a99a0-e159-46a4-88a1-c5430e94b1d7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ASUNTO: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="17" width="139" height="33" uuid="f119cafb-10f9-4e89-a2d4-fcfc1e96bcc1"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[OBTENCION DE TITULO POR EXPERIENCIA LABORAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="65" width="67" height="20" uuid="eba9cf87-4549-469b-a134-663ac66b0985"/>
+				<text><![CDATA[SEÑOR: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="81" width="359" height="18" uuid="9f1a88ee-0ca6-4d21-910f-bdea12906214"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[DECANO DE LA FACULTAD DE INGENIERIA DE MNAS, GEOLOGIA Y CIVIL]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="100" width="255" height="19" uuid="e8ffafbd-e854-432d-b80a-fb38a93710ed"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strNombreDecano}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="274" y="159" width="246" height="18" uuid="bcc36800-38ce-45b3-868d-c87494376407"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strNombreBachiller}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="178" width="100" height="19" uuid="bfdad5d7-7f7c-4004-998b-1e04ce91ba01"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strDniBachiller}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="197" width="100" height="19" uuid="010f2d70-59ad-400f-a63b-ea8a7c279240"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strCodigoBachiller}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="245" y="159" width="30" height="18" uuid="3afda95d-efba-449a-beb6-05549ece880f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Yo,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="178" width="85" height="18" uuid="cf12bcbf-311b-42a9-85b2-4d09cf8db4e5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[identificado con]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="179" width="44" height="18" uuid="7b9bb297-c5bf-4fdb-a7bf-9a1116a7642f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNI N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="513" y="177" width="5" height="18" uuid="e672c189-88be-47a1-b2e2-840ffb495267"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[y]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="244" y="197" width="168" height="18" uuid="6e03862a-eb53-4698-9515-beff5e306f60"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CÓDIGO DE ESTUDIANTE N°]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="215" width="90" height="18" uuid="f277f85f-e184-4681-bf33-32521d50bd99"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[y domiciliado en]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="337" y="216" width="183" height="18" uuid="86df6ba7-cee3-4216-be29-4f2312061df9"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strDireccionBachiller}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="245" y="234" width="275" height="36" uuid="b50e0c0e-d80f-4ca8-8d1f-a2e1ff04e98e"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ante Ud. con el debido respeto  me presento y expongo;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="277" width="491" height="63" uuid="3a926e96-25c8-416e-b5e9-ad88c6840804"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Quye siendo de necesidad ante usted con todo respewto comparezco a solicitar Quye siendo de necesidad ano a solicitarQuye siendo de necesidad ante usted con todo respewto comparezco a solicitarQuye siendo de necesidad ante usted con todo respewto comparezco a solicitar ....]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="350" width="490" height="40" uuid="4f05842e-a902-4570-8693-39efbfe9a4eb"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Por lo expuesto ruego a usted DECANO DE LA FACULKTAD DE MINAS, GEOILOGIA Y CIVIL, ciudad de AYACUCHO, le agradecere atender mi pedido por ser de mucha urgencia y justicia que espero alcanzar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="243" y="444" width="77" height="25" uuid="8963657d-5e60-4b62-86de-9ab2b6a249ab"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Atentamente;]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="340" y="410" width="180" height="30" uuid="883e828f-03f2-474f-af66-a80b8960edc0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strFechaLugarSolicitud}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="310" y="588" width="209" height="1" uuid="933d2c9a-a984-4366-b2fd-74c8cb3d2de8"/>
+			</line>
+			<textField>
+				<reportElement x="310" y="591" width="209" height="18" uuid="b86a4329-624f-4901-bf33-1831f3a3d3d8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strNombreBachiller}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="361" y="608" width="100" height="19" uuid="656b05dc-c188-4fda-8da1-a07bf0483273"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{strDniBachiller}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="311" y="609" width="44" height="18" uuid="33a9eb20-629e-4a50-91cf-6c31a600ece8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DNI N°]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
