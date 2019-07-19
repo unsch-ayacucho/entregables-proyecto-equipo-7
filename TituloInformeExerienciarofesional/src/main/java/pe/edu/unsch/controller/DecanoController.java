@@ -28,7 +28,7 @@ public class DecanoController {
     @CrossOrigin(origins = "*")
     @RequestMapping(value = "/decanos", method = RequestMethod.GET)
     public ResponseEntity<List<Decano>> listAllPerson() {
-        ArrayList<Decano> persons  = (ArrayList<Decano>) decanoDao.findAll();
+        ArrayList<Decano> persons  = (ArrayList<Decano>) decanoDao.findAll(); 
         if (persons.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
