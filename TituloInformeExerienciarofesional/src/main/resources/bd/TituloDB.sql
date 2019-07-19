@@ -60,6 +60,7 @@ CREATE TABLE `bachiller` (
   `email` varchar(80) NOT NULL,
   `telefono` varchar(9) NOT NULL,
   `nombreCompleto` varchar(500) NOT NULL,
+  `domicilio` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `codigo_UNIQUE` (`codigo`),
   UNIQUE KEY `dni_UNIQUE` (`dni`),
@@ -73,7 +74,7 @@ CREATE TABLE `bachiller` (
 
 LOCK TABLES `bachiller` WRITE;
 /*!40000 ALTER TABLE `bachiller` DISABLE KEYS */;
-INSERT INTO `bachiller` VALUES ('1','12345654','MARIA','FARFAN','OCHATOMA','IS','GFSF','123456789','OIMUNHGF');
+INSERT INTO `bachiller` VALUES ('1','12345654','MARIA','FARFAN','OCHATOMA','IS','maria.farfan.27@unsch.edu.pe','123456789','MARIA FARFÁN OCHATOMA','Los olivoz mz b lt 8'),('2','76548765','POOL','HUAMANI','ACHALLMA','IS','apolinario.huamani.27@unsch.edu.pe','956478634','POOL HUAMANI ACHALLMA','Jr los claveles mz c lt 1');
 /*!40000 ALTER TABLE `bachiller` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +173,7 @@ CREATE TABLE `decano` (
 
 LOCK TABLES `decano` WRITE;
 /*!40000 ALTER TABLE `decano` DISABLE KEYS */;
-INSERT INTO `decano` VALUES ('12345678','sas','adf','f','g','654','');
+INSERT INTO `decano` VALUES ('12345678','DANIEL','CORDOVA','FERNANDEZ','g','935427812','DANIEL CORDOVA FERNANDEZ');
 /*!40000 ALTER TABLE `decano` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -323,7 +324,7 @@ CREATE TABLE `modulo` (
 
 LOCK TABLES `modulo` WRITE;
 /*!40000 ALTER TABLE `modulo` DISABLE KEYS */;
-INSERT INTO `modulo` VALUES (1,'Administración','fa-th-list',1),(2,'Organiación','fa-clone',1),(3,'Administración RH','fa-globe',1),(4,'Evaluacion 360°','fa-pencil',1),(5,'Estadísticas','fa-bar-chart-o',1);
+INSERT INTO `modulo` VALUES (1,'Administracion','fa-th-list',1),(2,'Documentos','fa-th-list',1),(3,'G','fa-globe',1);
 /*!40000 ALTER TABLE `modulo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,7 +368,7 @@ CREATE TABLE `opcion` (
   PRIMARY KEY (`idopcion`),
   KEY `fk_opcion_submodulo_idx` (`idsubmodulo`),
   CONSTRAINT `fk_opcion_submodulo` FOREIGN KEY (`idsubmodulo`) REFERENCES `submodulo` (`idsubmodulo`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -376,7 +377,7 @@ CREATE TABLE `opcion` (
 
 LOCK TABLES `opcion` WRITE;
 /*!40000 ALTER TABLE `opcion` DISABLE KEYS */;
-INSERT INTO `opcion` VALUES (1,'Nuevo',1,1),(2,'Editar',1,1),(3,'Cambiar estado',1,1),(4,'Eliminar',1,1),(5,'Nuevo',1,2),(6,'Editar',1,2),(7,'Nuevo',1,3),(8,'Editar',1,3),(9,'Nuevo',1,4);
+INSERT INTO `opcion` VALUES (1,'Nuevo',1,1),(2,'Editar',1,1),(3,'Cambiar estado',1,1),(4,'Eliminar',1,1),(5,'Nuevo',1,2),(6,'Editar',1,2),(7,'Nuevo',1,3),(8,'Editar',1,3),(9,'Nuevo',1,4),(10,'Editar',1,4),(11,'Nuevo',1,5),(12,'Editar',1,5),(13,'Nuevo',1,6),(14,'Editar',1,6),(15,'Nuevo',1,7),(16,'Editar',1,7),(17,'Nuevo',1,8),(18,'Editar',1,8);
 /*!40000 ALTER TABLE `opcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,7 +401,7 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Vendedor');
+INSERT INTO `perfil` VALUES (1,'ADMIN'),(2,'Bachiller');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,7 +422,7 @@ CREATE TABLE `perfil_opcion` (
   KEY `fk_perfilopcion_opcion_idx` (`idopcion`),
   CONSTRAINT `fk_perfilopcion_opcion` FOREIGN KEY (`idopcion`) REFERENCES `opcion` (`idopcion`),
   CONSTRAINT `fk_perfilopcion_perfil` FOREIGN KEY (`idperfil`) REFERENCES `perfil` (`idperfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -430,7 +431,7 @@ CREATE TABLE `perfil_opcion` (
 
 LOCK TABLES `perfil_opcion` WRITE;
 /*!40000 ALTER TABLE `perfil_opcion` DISABLE KEYS */;
-INSERT INTO `perfil_opcion` VALUES (1,1,1,1),(2,1,1,2),(3,1,1,3),(4,1,1,4),(5,1,1,5),(6,1,1,6),(7,1,1,7),(8,1,1,8),(9,1,1,9);
+INSERT INTO `perfil_opcion` VALUES (1,1,1,1),(2,1,1,2),(3,1,1,3),(4,1,1,4),(5,1,1,5),(6,1,1,6),(7,1,1,7),(8,1,1,8),(9,1,1,9),(10,1,1,10),(11,1,1,11),(12,1,1,12),(13,1,1,13),(14,1,1,14),(15,1,1,15),(16,1,1,16),(17,1,1,17),(18,1,1,18);
 /*!40000 ALTER TABLE `perfil_opcion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -519,20 +520,18 @@ DROP TABLE IF EXISTS `solicitud`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `solicitud` (
-  `idSolicitud` int(11) NOT NULL,
+  `idSolicitud` int(11) NOT NULL AUTO_INCREMENT,
   `idDocumento` int(11) NOT NULL,
   `codigo` varchar(8) NOT NULL,
   `dni` varchar(8) NOT NULL,
   PRIMARY KEY (`idSolicitud`),
-  UNIQUE KEY `idtable1_UNIQUE` (`idSolicitud`),
-  UNIQUE KEY `codigo_UNIQUE` (`codigo`),
-  UNIQUE KEY `UKm50gvo8n2c7exi117c7hfpje3` (`codigo`),
-  KEY `dni_idx` (`dni`),
-  KEY `documento_idx` (`idDocumento`),
+  KEY `codigo` (`codigo`),
+  KEY `dni` (`dni`),
+  KEY `documento` (`idDocumento`),
   CONSTRAINT `codigo` FOREIGN KEY (`codigo`) REFERENCES `bachiller` (`codigo`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `dni` FOREIGN KEY (`dni`) REFERENCES `decano` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `documento` FOREIGN KEY (`idDocumento`) REFERENCES `documento` (`idDocumento`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -541,7 +540,7 @@ CREATE TABLE `solicitud` (
 
 LOCK TABLES `solicitud` WRITE;
 /*!40000 ALTER TABLE `solicitud` DISABLE KEYS */;
-INSERT INTO `solicitud` VALUES (1,1,'1','12345678');
+INSERT INTO `solicitud` VALUES (5,1,'1','12345678'),(6,1,'1','12345678');
 /*!40000 ALTER TABLE `solicitud` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -569,7 +568,7 @@ CREATE TABLE `submodulo` (
 
 LOCK TABLES `submodulo` WRITE;
 /*!40000 ALTER TABLE `submodulo` DISABLE KEYS */;
-INSERT INTO `submodulo` VALUES (1,'Usuarios',1,1),(2,'Perfiles',1,1),(3,'Facultades',1,2),(4,'Departamentos',1,2),(5,'Áreas',1,2),(6,'Escuelas',1,2),(7,'Perfil puesto',1,3),(8,'Cargo',1,3),(9,'Competencias',1,4),(10,'Comportamientos',1,4),(11,'Evaluaciones',1,4),(12,'Clasificación general',1,5),(13,'Clasificación por Facultad',1,5),(14,'Clasificación por Departamento',1,5),(15,'Clasificación por Escuela',1,5);
+INSERT INTO `submodulo` VALUES (1,'Usuarios',1,1),(2,'Perfiles',1,1),(3,'Solicitud I',1,2),(4,'Memorando Multiple I',1,2),(5,'Dictamen',1,2),(6,'Resolución Decanal',1,2),(7,'Resolucion de Consejo',1,2),(8,'Acta de sustentaión',1,2);
 /*!40000 ALTER TABLE `submodulo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -610,12 +609,12 @@ CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   `usuario` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `password` varchar(60) DEFAULT NULL,
   `foto` varchar(100) DEFAULT NULL,
   `estado` tinyint(4) DEFAULT NULL,
   `ultimo_login` datetime DEFAULT NULL,
   PRIMARY KEY (`idusuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -624,7 +623,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'admin','admin','admin',NULL,1,NULL);
+INSERT INTO `usuario` VALUES (1,'admin','admin','$2a$10$ajo1wvIJE2Tmyb5YQFIcfOq9GCVtOtVuZcMeLyVCliChzLEIR/3Dy',NULL,1,NULL),(2,'bachiller','bachiller','$2a$10$/68CYjpRETSdcURRCLPN5OOZVx9TZSz8RKNGewFwtoIPqsiRB0WDa',NULL,1,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -667,4 +666,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-03 20:04:39
+-- Dump completed on 2019-07-17 21:42:59
