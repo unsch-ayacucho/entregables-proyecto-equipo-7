@@ -1,0 +1,26 @@
+#customFile .custom-file-control::after {
+    content: "Select file...";
+}
+
+#customFile .custom-file-control::before {
+    content: "Click me";
+}
+
+#customFile .custom-file-control:lang(es)::after {
+    content: "Seleccionar archivo...";
+}
+
+#customFile .custom-file-control:lang(es)::before {
+    content: "Seleccionar";
+}
+
+.custom-file-control.selected:lang(en)::after {
+    content: "" !important;
+}
+
+.custom-file {
+    overflow: hidden;
+}
+.custom-file-control {
+    white-space: nowrap;
+}

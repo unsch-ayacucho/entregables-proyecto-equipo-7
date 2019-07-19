@@ -31,84 +31,137 @@
 				</div>
 
 				<div class="portlet-body form">
-					<form id="form" method="post" role="form" th:object="${solicitudObject}"  th:action="@{/views/generarDocumento/SaveDoc}">
+
+					<div id="tabs">
+						<ul>
+							<li><a href="#tabs-1">SOLICITUD</a></li>
+							<li><a href="#tabs-2">ADJUNTAR ARCHIVOS</a></li>
+						</ul>
+						<div id="tabs-1">
+							<form id="form" method="post" role="form" th:object="${solicitudObject}"  th:action="@{/views/generarDocumento/SaveDoc}">
+								<div class="form-body">
+									<input type="hidden" name="documento" id="documento" />
+									<input type="hidden"  th:field="*{decano}"  name="decano" id="decano" />
+									<input type="hidden"  th:field="*{bachiller}" name="bachiller" id="bachiller" />
+									<input type="hidden"  th:field="*{idSolicitud}"  />
+
+									<div class="form-group col-md-12">
+										<label>Decano</label>
+										<div class="input-group">
+											<span class="input-group-addon"> <i	class="fa   fa-user-md"></i></span>
+											<input type="text" th:field="*{decano.nombreCompleto}" id="txtNombreDecano" class="form-control"	placeholder="Nombre Decano" >
+										</div>
+									</div>
 
 
-
-
-						<div class="form-body">
-
-
-							<input type="hidden" name="documento" id="documento" />
-							<input type="hidden"  th:field="*{decano}"  name="decano" id="decano" />
-							<input type="hidden"  th:field="*{bachiller}" name="bachiller" id="bachiller" />
-							<input type="hidden"  th:field="*{idSolicitud}"  />
-
-							<div class="form-group col-md-12">
-								<label>Decano</label>
-								<div class="input-group">
-									<span class="input-group-addon"> <i	class="fa   fa-user-md"></i></span>
-									<input type="text" th:field="*{decano.nombreCompleto}" id="txtNombreDecano" class="form-control"	placeholder="Nombre Decano" >
-								</div>
-							</div>
-
-
-							<div class="form-group col-md-12">
-								<label>Bachiller</label>
-								<div class="input-group">
+									<div class="form-group col-md-12">
+										<label>Bachiller</label>
+										<div class="input-group">
 									<span class="input-group-addon"> <i
-										class="fa  fa-graduation-cap"></i>
+											class="fa  fa-graduation-cap"></i>
 									</span> <input type="text" class="form-control" id="txtNombreBachiller"	placeholder="Apellidos y nombres del Bachiller" readonly="readonly">
-								</div>
-							</div>
+										</div>
+									</div>
 
 
-							<div class="form-group col-md-6">
-								<label>Codigo del estudiante</label>
-								<div class="input-group">
+									<div class="form-group col-md-6">
+										<label>Codigo del estudiante</label>
+										<div class="input-group">
 									<span class="input-group-addon"> <i
-										class="fa  fa-qrcode"></i>
+											class="fa  fa-qrcode"></i>
 									</span> <input type="number"  maxlength="8" class="form-control" id="txtCodigo"	placeholder="codigo estudiante">
-								</div>
-							</div>
+										</div>
+									</div>
 
-							<div class="form-group col-md-6">
-								<label>DNI</label>
-								<div class="input-group">
+									<div class="form-group col-md-6">
+										<label>DNI</label>
+										<div class="input-group">
 									<span class="input-group-addon"> <i
-										class="fa  fa-file-text-o"></i>
+											class="fa  fa-file-text-o"></i>
 									</span> <input type="number" id="txtDniBachiller" maxlength="8" class="form-control" readonly	placeholder="Numero DNI">
-								</div>
-							</div>
+										</div>
+									</div>
 
 
-							<div class="form-group col-md-12">
-								<label>Domicilio</label>
-								<div class="input-group">
+									<div class="form-group col-md-12">
+										<label>Domicilio</label>
+										<div class="input-group">
 									<span class="input-group-addon"> <i class="fa  fa-home"></i>
 									</span> <input type="text" class="form-control" id="txtDomicilio"		placeholder="Domicilio">
-								</div>
-							</div>
+										</div>
+									</div>
 
 
-							<div class="form-group col-md-4">
-								<label>Fecha</label>
-								<div class="input-group">
+									<div class="form-group col-md-4">
+										<label>Fecha</label>
+										<div class="input-group">
 									<span class="input-group-addon"> <i
-										class="fa  fa-calendar"></i>
+											class="fa  fa-calendar"></i>
 									</span> <input name="fechaActual" id="fechaActual" type="Date"
-										class="form-control">
+												   class="form-control">
+										</div>
+									</div>
+									<div class="row"></div>
+
 								</div>
+								<div class="form-actions">
+									<button type="submit" class="btn blue">GUARDAR</button>
+								</div>
+
+
+							</form>
+						</div>
+						<div id="tabs-2">
+
+							<div class="row">
+								<!--<div class="col-md-12">
+									<p>
+								<span class="label label-danger">
+								NOTE: </span>
+										&nbsp; This plugins works only on Latest Chrome, Firefox, Safari, Opera & Internet Explorer 10.
+									</p>
+									<form action="../../assets/global/plugins/dropzone/upload.php" class="dropzone" id="my-dropzone">
+									</form>
+								</div>-->
+								<form method="post" th:action="@{/upload/uploadMultiple/}" enctype="multipart/form-data" id="fileUploadForm" class="container">
+									<div class="form-group">
+										<label class="custom-file" id="customFile">
+											<input type="file" class="custom-file-input" name="files" aria-describedby="fileHelp">
+											<span class="custom-file-control form-control-file"></span>
+										</label>
+									</div>
+									<div class="form-group">
+										<label class="custom-file" id="customFile">
+											<input type="file" class="custom-file-input" name="files" aria-describedby="fileHelp">
+											<span class="custom-file-control form-control-file"></span>
+										</label>
+									</div>
+									<div class="form-group">
+										<label class="custom-file" id="customFile">
+											<input type="file" class="custom-file-input" name="files" aria-describedby="fileHelp">
+											<span class="custom-file-control form-control-file"></span>
+										</label>
+									</div>
+									<div class="form-group">
+										<label class="custom-file" id="customFile">
+											<input type="file" class="custom-file-input" name="files" aria-describedby="fileHelp">
+											<span class="custom-file-control form-control-file"></span>
+										</label>
+									</div>
+									<div style="margin-bottom: 10px">
+										<button onclick="subirArchivoAjax()" class="btn btn-success">Enviar</button>
+									</div>
+								</form>
 							</div>
-							<div class="row"></div>
 
 						</div>
-						<div class="form-actions">
-							<button type="submit" class="btn blue">GUARDAR</button>
-						</div>
+
+					</div>
 
 
-					</form>
+
+
+
 				</div>
 			</div>
 			<!-- END SAMPLE TABLE PORTLET-->
@@ -120,12 +173,25 @@
 				/*<![CDATA[*/
 				$(document).ready(function () {
 
+					$('.custom-file-input').on('change',function(){
+						$(this).next('.form-control-file').addClass("selected").html($(this).val());
+					})
+
+					$( "#tabs" ).tabs();
+
 					$('#form').bind("keypress", function(e) {
 						if (e.keyCode == 13) {
 							e.preventDefault();
 							return false;
 						}
 					});
+					$('#fileUploadForm').bind("keypress", function(e) {
+						if (e.keyCode == 13) {
+							e.preventDefault();
+							return false;
+						}
+					});
+
 
 					$('#txtNombreDecano').autocomplete({
 						source: function (request, response) {
@@ -148,6 +214,7 @@
 					});
 
 
+
 				});
 
 				function buscarPorCodigoBachiller(codigo){
@@ -167,6 +234,29 @@
 				}
 
 
+				function subirArchivoAjax(){
+					var formData = new FormData(document.getElementById("fileUploadForm"));
+					$.ajax({
+						data: formData,
+						url: '/upload/uploadMultiple/',
+						type: 'POST',
+						cache: false,
+						contentType: false,
+						processData: false,
+						dataType: "html",
+						success: function (response) {
+							alert(response);
+						},
+						error: function (jqXHR, textStatus, errorThrown) {
+							alert(textStatus);
+							if (jqXHR.status == 500) {
+								console.log('Internal error: ' + jqXHR.responseText);
+							} else {
+								console.log('Unexpected error.');
+							}
+						}
+					});
+				}
 
 
 				$("#txtCodigo").keypress(function(e) {
@@ -175,6 +265,7 @@
 						e.preventDefault();
 						buscarPorCodigoBachiller($("#txtCodigo").val());
 					} });
+
 
 
 				/*]]>*/
