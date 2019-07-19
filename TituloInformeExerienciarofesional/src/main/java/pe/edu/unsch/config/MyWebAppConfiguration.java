@@ -9,7 +9,6 @@ public class MyWebAppConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-
         registry.addResourceHandler("/reportes/**").addResourceLocations("file:/C:/reportes/");
         super.addResourceHandlers(registry);
     }
