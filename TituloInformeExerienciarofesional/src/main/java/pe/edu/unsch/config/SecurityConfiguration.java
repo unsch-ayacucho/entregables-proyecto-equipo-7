@@ -14,7 +14,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	/*@Autowired
+	/*@Autowired 
 	private AccessDeniedHandler accessDeniedHandler;*/
 	
 	@Autowired
@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    .and()
 		.authorizeRequests().antMatchers("/admin/login/**")
 		.permitAll()
-		.antMatchers("/admin/**")
+		.antMatchers("/admin/**") 
 		//.hasRole("ADMIN")
 		//.antMatchers("/admin/**")
 		//.hasRole("ADMIN")
@@ -56,6 +56,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.permitAll()
 		.and()
 		.exceptionHandling();
-		/*.accessDeniedHandler(accessDeniedHandler);*/
+		/*.accessDeniedHandler(accessDeniedHandler);*/ 
 	}
 }
